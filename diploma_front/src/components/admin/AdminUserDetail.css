@@ -1,0 +1,197 @@
+:root {
+  --color-bg: #f9fafb;
+  --color-card-bg: #ffffff;
+  --color-primary: #4f46e5; /* фиолетовый */
+  --color-primary-hover: #4338ca;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-error: #ef4444;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.user-detail {
+  max-width: 900px;
+  margin: 30px auto;
+  background: var(--color-card-bg);
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px var(--color-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.user-detail:hover {
+  box-shadow: 0 12px 28px var(--color-shadow);
+}
+
+.back-btn {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+  transition: background-color 0.3s ease;
+  margin-bottom: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+  background-color: var(--color-primary-hover);
+  outline: none;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.section-block {
+  margin-bottom: 40px;
+}
+
+.sort-controls {
+  margin-bottom: 16px;
+}
+
+.sort-btn {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  user-select: none;
+}
+
+.sort-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.sort-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+.chat-list,
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.chat-item,
+.note-item {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.chat-item:hover,
+.note-item:hover {
+  background-color: #eef2ff;
+}
+
+.chat-item:last-child,
+.note-item:last-child {
+  border-bottom: none;
+}
+
+.chat-time {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+  font-style: italic;
+  user-select: text;
+}
+
+.empty-state {
+  padding: 18px 24px;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+  user-select: none;
+}
+
+.user-detail-loading,
+.user-detail-error {
+  padding: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.user-detail-error {
+  color: var(--color-error);
+}
+
+/* Скроллбар для списков (современный стиль) */
+.chat-list::-webkit-scrollbar,
+.note-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-list::-webkit-scrollbar-track,
+.note-list::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-radius: 14px;
+}
+
+.chat-list::-webkit-scrollbar-thumb,
+.note-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 14px;
+  border: 2px solid var(--color-bg);
+}
+
+/* Адаптив */
+@media (max-width: 640px) {
+  .user-detail {
+    padding: 20px;
+    margin: 15px;
+  }
+
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

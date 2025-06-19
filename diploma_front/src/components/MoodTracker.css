@@ -1,0 +1,183 @@
+.mood-tracker-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.menu-button {
+  margin-right: 1rem;
+}
+
+.title {
+  color: var(--color-text);
+  font-weight: 600 !important;
+}
+
+.refresh-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.refresh-button {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.last-updated {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.loading-section,
+.error-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  color: var(--color-text);
+}
+
+/* Карточка анализа */
+.mood-summary {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--color-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  transition: background-color 0.3s ease;
+  color: var(--color-text);
+}
+
+.mood-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mood-icon {
+  font-size: 3rem !important;
+  color: var(--color-text);
+}
+
+.mood-text {
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  color: var(--color-text);
+}
+
+.divider {
+  margin: 1.5rem 0;
+  border-color: var(--color-border);
+}
+
+.mood-details {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.score-section,
+.keywords-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--color-text);
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.keyword-chip {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+/* История */
+.history-chart {
+  padding: 2rem;
+  height: 500px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  transition: background-color 0.3s ease;
+  color: var(--color-text);
+}
+
+.positive { color: #27ae60; }
+.negative { color: #e74c3c; }
+.neutral  { color: #3498db; }
+
+.score-chip.positive {
+  background-color: #27ae60 !important;
+  color: white;
+}
+.score-chip.negative {
+  background-color: #e74c3c !important;
+  color: white;
+}
+.score-chip.neutral {
+  background-color: #3498db !important;
+  color: white;
+}
+
+.mood-tracker-container.sidebar-open {
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.mood-tracker-container.sidebar-closed {
+  margin-left: 72px;
+  transition: margin-left 0.3s ease;
+}
+
+[data-theme="dark"] .mood-tracker-container {
+  background: var(--color-bg-gradient);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .mood-summary,
+[data-theme="dark"] .history-chart {
+  background: var(--color-container-bg);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .title,
+[data-theme="dark"] .mood-text,
+[data-theme="dark"] .last-updated,
+[data-theme="dark"] .loading-section > *,
+[data-theme="dark"] .error-section > *,
+[data-theme="dark"] .score-section > *,
+[data-theme="dark"] .keywords-section > * {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .keyword-chip {
+  background: var(--color-container-bg);
+  border-color: var(--color-border);
+  color: var(--color-text-light);
+}
+
+[data-theme="dark"] .divider {
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .refresh-button {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}

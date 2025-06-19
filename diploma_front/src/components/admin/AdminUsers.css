@@ -1,0 +1,147 @@
+.admin-users {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+.admin-users h2 {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #34495e;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.refresh-button {
+  background-color: #2980b9;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover,
+.refresh-button:focus {
+  background-color: #1f6391;
+  outline: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background: linear-gradient(90deg, #4a90e2, #357ABD);
+  color: white;
+  user-select: none;
+}
+
+thead th {
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+thead th.sortable:hover {
+  background-color: rgba(255 255 255 / 0.15);
+}
+
+thead th .sort-indicator {
+  margin-left: 5px;
+}
+
+tbody tr {
+  background-color: #fff;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+tbody tr.user-row {
+  cursor: pointer;
+}
+
+tbody tr.user-row:hover,
+tbody tr.user-row:focus {
+  background-color: #dceefc;
+  box-shadow: inset 4px 0 0 0 #2980b9;
+  outline: none;
+}
+
+tbody td {
+  padding: 14px 20px;
+  font-size: 15px;
+  color: #34495e;
+  vertical-align: middle;
+}
+
+tbody td.active {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+tbody td.inactive {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .admin-users {
+    padding: 0 10px;
+  }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    display: none;
+  }
+  tbody tr {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  tbody td {
+    padding-left: 50%;
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+  }
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #7f8c8d;
+    white-space: nowrap;
+  }
+}

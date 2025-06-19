@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
+
+:root {
+  --sidebar-bg-light: linear-gradient(135deg, #8a99a9 0%, #5a6a7a 100%);
+  --sidebar-bg-dark: #1f2937;
+
+  --sidebar-text-light: #233554;
+  --sidebar-text-dark: #e2e8f0;
+
+  --sidebar-shadow-light: 8px 0 32px rgba(40, 60, 90, 0.08);
+  --sidebar-shadow-dark: 4px 0 20px rgba(0, 0, 0, 0.6);
+
+  --sidebar-hover-bg-light: linear-gradient(90deg, #a7bfe8 30%, #f3f8ff 100%);
+  --sidebar-hover-bg-dark: #374151;
+
+  --sidebar-active-bg-light: linear-gradient(90deg, #a7bfe8 30%, #f3f8ff 100%);
+  --sidebar-active-bg-dark: #4c6ef5;
+
+  --sidebar-active-border-light: #3461a3;
+  --sidebar-active-border-dark: #3b82f6;
+
+  --button-bg-light: transparent;
+  --button-bg-dark: #3b82f6;
+
+  --button-color-light: #233554;
+  --button-color-dark: #fff;
+
+  --button-hover-bg-light: linear-gradient(90deg, #a7bfe8 30%, #f3f8ff 100%);
+  --button-hover-bg-dark: #2563eb;
+}
+
+.sidebar {
+  width: 260px;
+  padding: 32px 18px 24px 18px;
+  box-shadow: var(--sidebar-shadow-light);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.35s cubic-bezier(.77,0,.18,1), background 0.3s;
+  position: fixed;
+  height: 100vh;
+  color: var(--sidebar-text-light);
+  z-index: 1000;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  overflow: hidden;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  background: var(--sidebar-bg-light);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar.closed {
+  width: 72px;
+  padding-left: 8px;
+  padding-right: 8px;
+  overflow-x: visible;
+}
+
+.sidebar.open {
+  width: 260px;
+}
+
+/* Логотип и кнопка в одной строке */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  position: relative;
+  padding-left: 2px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.logo-icon img {
+  max-width: 100%;
+  max-height: 50px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: var(--sidebar-text-light);
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.closed .logo-text {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 8px;
+}
+
+.menu-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  color: var(--sidebar-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.menu-toggle:hover {
+  background: var(--sidebar-hover-bg-light);
+  transform: rotate(180deg);
+}
+
+/* Навигация и остальное без изменений */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.sidebar nav ul li {
+  margin: 16px 0;
+  position: relative;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.sidebar nav ul li a,
+.settings-button {
+  text-decoration: none;
+  color: var(--sidebar-text-light);
+  display: flex;
+  align-items: center;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  position: relative;
+  cursor: pointer;
+  background: var(--button-bg-light);
+  border: none;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sidebar nav ul li.active a,
+.sidebar nav ul li a:hover,
+.settings-button:hover {
+  background: var(--sidebar-active-bg-light);
+  color: var(--sidebar-active-border-light);
+  box-shadow: 0 2px 12px rgba(120, 180, 255, 0.08);
+}
+
+.sidebar nav ul li.active a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 5px;
+  border-radius: 3px;
+  background: var(--sidebar-active-border-light);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-right: 18px;
+  min-width: 28px;
+  text-align: center;
+  color: var(--sidebar-active-border-light);
+  transition: color 0.2s;
+}
+
+.sidebar.closed .nav-text {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s, max-width 0.3s;
+}
+
+.nav-text {
+  max-width: 200px;
+  transition: opacity 0.3s, max-width 0.3s;
+}
+
+
+.sidebar nav {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a7bfe8 #e0e7ef;
+}
+
+.sidebar nav::-webkit-scrollbar {
+  width: 6px;
+  background: #e0e7ef;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb {
+  background: #a7bfe8;
+  border-radius: 4px;
+}
+
+/* --- Тёмная тема --- */
+[data-theme="dark"] .sidebar {
+  background-color: var(--sidebar-bg-dark);
+  box-shadow: var(--sidebar-shadow-dark);
+  color: var(--sidebar-text-dark);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .sidebar-logo .logo-text {
+  color: var(--sidebar-text-dark);
+}
+
+[data-theme="dark"] .menu-toggle {
+  background: var(--button-bg-dark);
+  color: var(--button-color-dark);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.7);
+}
+
+[data-theme="dark"] .menu-toggle:hover {
+  background: var(--button-hover-bg-dark);
+  color: #fff;
+  transform: rotate(90deg) scale(1.07);
+}
+
+[data-theme="dark"] .sidebar nav ul li a {
+  color: var(--sidebar-text-dark);
+  border-left-color: transparent;
+}
+
+[data-theme="dark"] .sidebar nav ul li a:hover {
+  background-color: var(--sidebar-hover-bg-dark);
+  border-left-color: var(--sidebar-active-border-dark);
+  color: #fff;
+}
+
+[data-theme="dark"] .sidebar nav ul li.active a {
+  background-color: var(--sidebar-active-bg-dark);
+  color: #fff;
+  border-left-color: var(--sidebar-active-border-dark);
+  box-shadow: 2px 0 8px rgba(59, 130, 246, 0.6);
+}
+
+[data-theme="dark"] .sidebar nav ul li.active a::before {
+  background: var(--sidebar-active-border-dark);
+}
+
+[data-theme="dark"] .nav-icon {
+  color: var(--sidebar-active-border-dark);
+}
+
+[data-theme="dark"] .nav-text {
+  color: var(--sidebar-text-dark);
+}
+
+[data-theme="dark"] .settings-button {
+  background: var(--button-bg-dark);
+  color: var(--button-color-dark);
+}
+
+[data-theme="dark"] .settings-button:hover {
+  background: var(--button-hover-bg-dark);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.7);
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 72px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .sidebar.closed {
+    width: 72px !important;
+  }
+  .sidebar.open {
+    width: 260px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    position: fixed;
+    z-index: 110;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 72px !important;
+  }
+}

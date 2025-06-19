@@ -1,0 +1,224 @@
+/* Общий стиль и фон */
+.admin-dashboard {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fafafa;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Хедер */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eaeaea;
+  user-select: none;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  color: #222;
+  letter-spacing: 0.03em;
+}
+
+/* Кнопки */
+.admin-actions button {
+  margin-left: 12px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.refresh-btn {
+  background: #2980b9;
+}
+
+.refresh-btn:hover {
+  background: #1c5980;
+  box-shadow: 0 6px 14px rgba(41, 128, 185, 0.6);
+}
+
+.logout-btn {
+  background: #e74c3c;
+}
+
+.logout-btn:hover {
+  background: #b63524;
+  box-shadow: 0 6px 14px rgba(231, 76, 60, 0.6);
+}
+
+/* Статистика */
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1 1 220px;
+  background: white;
+  padding: 26px 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+  margin: 0 0 12px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #555;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Таблица пользователей */
+.users-table-container {
+  margin-top: 40px;
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  background: white;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  min-width: 600px;
+}
+
+.users-table th,
+.users-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table th {
+  background-color: #f7f9fc;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.users-table tr:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Загрузка */
+.admin-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 20px;
+  color: #2980b9;
+  font-weight: 600;
+  font-size: 20px;
+  min-height: 300px;
+}
+
+/* Спиннер */
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #2980b9;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Ошибка */
+.admin-error {
+  text-align: center;
+  padding: 50px 20px;
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.admin-error button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 16px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-error button:hover {
+  background: #b63524;
+  box-shadow: 0 7px 20px rgba(182, 53, 36, 0.7);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .admin-actions button {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .stats-container {
+    flex-direction: column;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+
+  .users-table {
+    font-size: 14px;
+  }
+}

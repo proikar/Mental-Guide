@@ -1,0 +1,17 @@
+/* Применяем Dancing Script ко всей App */
+.App {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Пример отдельного блока с Raleway */
+#raleway-font {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 30px;
+}
