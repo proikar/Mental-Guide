@@ -1,0 +1,90 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mental_db
+      MYSQL_USER: auth_user
+      MYSQL_PASSWORD: Auth@1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  ai-chat:
+    build:
+      context: ./diploma_back/ai-chat
+    container_name: ai-chat
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./diploma_back/ai-chat/.env
+    depends_on:
+      - mysql
+
+  simple-bff:
+    build:
+      context: ./diploma_back/simple-bff
+    container_name: simple-bff
+    ports:
+      - "3001:3001"
+    depends_on:
+      - auth-service
+      - ai-chat
+      - notes-service
+      - admin-service
+
+  auth-service:
+    build:
+      context: ./diploma_back/auth
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mental_db
+      - SPRING_DATASOURCE_USERNAME=auth_user
+      - SPRING_DATASOURCE_PASSWORD=Auth@1234
+    depends_on:
+      - mysql
+
+  notes-service:
+    build:
+      context: ./diploma_back/notes-service
+    container_name: notes-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mental_db
+      - SPRING_DATASOURCE_USERNAME=auth_user
+      - SPRING_DATASOURCE_PASSWORD=Auth@1234
+    depends_on:
+      - mysql
+
+  admin-service:
+    build:
+      context: ./diploma_back/admin-service
+    container_name: admin-service
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mental_db
+      - SPRING_DATASOURCE_USERNAME=auth_user
+      - SPRING_DATASOURCE_PASSWORD=Auth@1234
+    depends_on:
+      - mysql
+
+  frontend:
+    build:
+      context: ./diploma_front
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - simple-bff
+
+volumes:
+  mysql-data:
